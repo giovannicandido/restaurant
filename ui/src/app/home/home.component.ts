@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from './home.service';
+import { Observable } from 'rxjs';
+import { Restaurant } from '../_models/restaurant';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  restaurants: Observable<Restaurant[]>;
 
-  constructor() { }
+  constructor(private service: HomeService) { }
 
   ngOnInit(): void {
+    this.restaurants = this.service.load();
   }
 
 }

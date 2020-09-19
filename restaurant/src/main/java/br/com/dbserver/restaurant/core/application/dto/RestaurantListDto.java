@@ -1,15 +1,17 @@
 package br.com.dbserver.restaurant.core.application.dto;
 
-import br.com.dbserver.restaurant.core.domain.Restaurant;
-
 public class RestaurantListDto {
     private Long id;
     private String name;
+    private String description;
+    private String imgUrl;
     private Integer numberOfVotes;
 
-    public RestaurantListDto(Long id, String name, Integer numberOfVotes) {
+    public RestaurantListDto(Long id, String name, String description, String imgUrl, Integer numberOfVotes) {
         this.id = id;
         this.name = name;
+        this.description = description;
+        this.imgUrl = imgUrl;
         this.numberOfVotes = numberOfVotes;
     }
 
@@ -38,5 +40,21 @@ public class RestaurantListDto {
 
     public void setNumberOfVotes(Integer numberOfVotes) {
         this.numberOfVotes = numberOfVotes;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

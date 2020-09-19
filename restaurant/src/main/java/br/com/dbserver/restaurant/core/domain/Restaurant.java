@@ -18,6 +18,12 @@ public class Restaurant {
     @Column(length = 100)
     private String name;
 
+    @Column(length = 255)
+    private String description;
+
+    @Column(length = 255, name = "img_url")
+    private String imgUrl;
+
     @OneToMany(mappedBy = "restaurant")
     private List<Vote> vote;
 
@@ -43,5 +49,21 @@ public class Restaurant {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

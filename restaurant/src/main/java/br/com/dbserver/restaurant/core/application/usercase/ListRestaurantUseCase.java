@@ -23,7 +23,7 @@ public class ListRestaurantUseCase {
         Iterable<Restaurant> all = restaurantRepository.findAll();
 
         all.forEach(restaurant -> restaurantListDtos.add(new RestaurantListDto(restaurant.getId(),
-                restaurant.getName(), 10)));
+                restaurant.getName(), restaurant.getDescription(), restaurant.getImgUrl(), 10)));
 
         return restaurantListDtos;
     }

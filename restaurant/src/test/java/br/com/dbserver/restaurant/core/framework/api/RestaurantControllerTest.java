@@ -38,6 +38,6 @@ class RestaurantControllerTest extends AbstractWebTest {
         ResponseEntity<String> response = restTemplate.exchange(getServerUrl(LIST_URL), HttpMethod.GET, httpEntity, String.class);
         List<RestaurantListDto> responseList = objectMapper.readValue(response.getBody(), new TypeReference<List<RestaurantListDto>>() {
         });
-        assertThat(responseList).hasSize(4);
+        assertThat(responseList).hasSize(8);
     }
 }

@@ -1,1 +1,13 @@
-<p>home works!</p>
+<div class="row">
+  <div class="col-sm-4" *ngFor="let restaurant of (restaurants | async)">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="restaurant.imgUrl" alt="Restaurant image">
+      <div class="card-body">
+        <h5 class="card-title">{{restaurant.name}}</h5>
+        <p class="card-text">{{restaurant.description}}</p>
+        <a class="btn btn-primary">Vote</a>
+      </div>
+    </div>
+  </div>
+</div>
+
