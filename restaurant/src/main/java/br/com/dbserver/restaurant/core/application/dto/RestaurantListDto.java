@@ -5,9 +5,9 @@ public class RestaurantListDto {
     private String name;
     private String description;
     private String imgUrl;
-    private Integer numberOfVotes;
+    private Long numberOfVotes;
 
-    public RestaurantListDto(Long id, String name, String description, String imgUrl, Integer numberOfVotes) {
+    public RestaurantListDto(Long id, String name, String description, String imgUrl, Long numberOfVotes) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -34,11 +34,11 @@ public class RestaurantListDto {
         this.name = name;
     }
 
-    public Integer getNumberOfVotes() {
+    public Long getNumberOfVotes() {
         return numberOfVotes;
     }
 
-    public void setNumberOfVotes(Integer numberOfVotes) {
+    public void setNumberOfVotes(Long numberOfVotes) {
         this.numberOfVotes = numberOfVotes;
     }
 

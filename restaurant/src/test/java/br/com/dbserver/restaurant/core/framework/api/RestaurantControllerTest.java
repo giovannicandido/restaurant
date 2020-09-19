@@ -21,7 +21,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Sql("/sql/list-restaurant.sql")
+@Sql({"/sql/clear-database.sql", "/sql/list-restaurant.sql"})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class RestaurantControllerTest extends AbstractWebTest {
     private static final String LIST_URL = "/restaurant";
@@ -38,6 +38,6 @@ class RestaurantControllerTest extends AbstractWebTest {
         ResponseEntity<String> response = restTemplate.exchange(getServerUrl(LIST_URL), HttpMethod.GET, httpEntity, String.class);
         List<RestaurantListDto> responseList = objectMapper.readValue(response.getBody(), new TypeReference<List<RestaurantListDto>>() {
         });
-        assertThat(responseList).hasSize(8);
+        assertThat(responseList).hasSize(4);
     }
 }

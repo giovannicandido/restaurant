@@ -1,11 +1,14 @@
 <div class="row">
-  <div class="col-sm-4" *ngFor="let restaurant of (restaurants | async)">
+  <div class="col-sm-4" *ngFor="let restaurant of (restaurants | async)" style="margin-top: 15px">
     <div class="card" style="width: 18rem;">
       <img class="card-img-top" [src]="restaurant.imgUrl" alt="Restaurant image">
       <div class="card-body">
         <h5 class="card-title">{{restaurant.name}}</h5>
         <p class="card-text">{{restaurant.description}}</p>
-        <a class="btn btn-primary">Vote</a>
+        <div>
+          <a (click)="vote(restaurant.id)" class="btn btn-primary" style="float: left">Vote</a>
+          <span style="float: right">Votos: {{restaurant.numberOfVotes}}</span>
+        </div>
       </div>
     </div>
   </div>
