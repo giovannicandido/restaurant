@@ -32,7 +32,7 @@ import br.com.dbserver.restaurant.security.framework.api.response.MessageRespons
 import br.com.dbserver.restaurant.security.jwt.JwtUtils;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("${v1Api}/auth")
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
