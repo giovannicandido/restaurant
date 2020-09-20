@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.dbserver.restaurant.core.application.dto.RestaurantListDto;
 import br.com.dbserver.restaurant.core.domain.Restaurant;
-import br.com.dbserver.restaurant.core.domain.dto.RestaurantVoteDto;
 import br.com.dbserver.restaurant.core.domain.repository.RestaurantRepository;
 import br.com.dbserver.restaurant.core.domain.repository.VoteRepository;
 
