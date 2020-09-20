@@ -24,13 +24,13 @@ export class HomeComponent implements OnInit {
     this.service.vote(id)
       .pipe(
         catchError(err => {
-          this.toast.error('Erro ao votar');
+          this.toast.error(err.error.message, 'Vote error');
           return throwError(err);
         })
       )
       .subscribe(r => {
         this.loadRestaurants();
-        this.toast.info('Voto computado com sucesso');
+        this.toast.info('Vote computed with success');
       });
   }
 
