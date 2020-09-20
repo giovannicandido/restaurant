@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.dbserver.restaurant.core.domain.Restaurant;
 import br.com.dbserver.restaurant.core.domain.RestaurantException;
@@ -27,6 +28,7 @@ public class VoteUseCase {
         this.voteRepository = voteRepository;
     }
 
+    @Transactional
     public void vote(Long restaurantId, String username) {
         Optional<User> userByUsername = userRepository.findByUsername(username);
         if (userByUsername.isEmpty()) {

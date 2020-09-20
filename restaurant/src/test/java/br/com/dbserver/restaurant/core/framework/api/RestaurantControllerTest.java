@@ -24,7 +24,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class RestaurantControllerTest extends AbstractWebTest {
     private static final String LIST_URL = "/restaurant";
-    private ObjectMapper objectMapper = new ObjectMapper();
     private static String authorizationToken;
     @BeforeAll
     private void setup() {
@@ -34,9 +33,9 @@ class RestaurantControllerTest extends AbstractWebTest {
     @Test
     void listRestaurants() throws JsonProcessingException {
         HttpEntity<String> httpEntity = createAuthorizationEntity(null, authorizationToken);
-        ResponseEntity<String> response = restTemplate.exchange(getServerUrl(LIST_URL), HttpMethod.GET, httpEntity, String.class);
-        List<RestaurantListDto> responseList = objectMapper.readValue(response.getBody(), new TypeReference<List<RestaurantListDto>>() {
-        });
+        ResponseEntity<RestaurantListDto[]> response = restTemplate.exchange(getServerUrl(LIST_URL),
+                HttpMethod.GET, httpEntity, RestaurantListDto[].class);
+        RestaurantListDto[] responseList = response.getBody();
         assertThat(responseList).hasSize(4);
     }
 }

@@ -7,6 +7,10 @@ public class RestaurantError {
         this.message = message;
     }
 
+    public RestaurantError() {
+        this.message = "";
+    }
+
     public String getMessage() {
         return message;
     }
