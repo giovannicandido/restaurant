@@ -1,1 +1,25 @@
-<p>result works!</p>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"
+ style="margin-top: 15px;">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+    <button (click)="process()" type="button" class="btn btn-secondary">Force result process</button>
+  </div>
+  <div class="btn-group mr-2" role="group" aria-label="Second group">
+    <button (click)="load()" type="button" class="btn btn-secondary">Reload</button>
+  </div>
+</div>
+<table class="table" style="margin-top: 15px">
+  <thead>
+  <tr>
+    <th scope="col">Restaurant Name</th>
+    <th scope="col">Day of result</th>
+    <th scope="col">Number of votes</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let result of (results | async)">
+    <th scope="row">{{result.restaurantName}}</th>
+    <td>{{result.dayOfResult | date}}</td>
+    <td>{{result.numberOfVotes}}</td>
+  </tr>
+  </tbody>
+</table>
