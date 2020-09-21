@@ -8,8 +8,6 @@ import java.time.temporal.WeekFields;
 import java.util.Locale;
 
 public class LocalizedWeek {
-    private final static ZoneId TZ = ZoneId.of("America/Sao_Paulo");
-
     private final Locale locale;
     private final DayOfWeek firstDayOfWeek;
     private final DayOfWeek lastDayOfWeek;

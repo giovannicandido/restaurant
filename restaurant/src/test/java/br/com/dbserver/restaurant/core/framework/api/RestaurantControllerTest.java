@@ -57,6 +57,7 @@ class RestaurantControllerTest extends AbstractWebTest {
         Restaurant restaurant = new Restaurant();
         restaurant.setId(1L);
         voteResult.setWinRestaurant(restaurant);
+        voteResult.setNumberOfVotes(2L);
         voteResultRepository.save(voteResult);
 
         HttpEntity<String> httpEntity = createAuthorizationEntity(null, authorizationToken);
