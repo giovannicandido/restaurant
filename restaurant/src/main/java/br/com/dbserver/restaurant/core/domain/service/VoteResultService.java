@@ -36,7 +36,8 @@ public class VoteResultService {
     private void deleteVoteResultForThisDayIfAny() {
         LocalDate after = LocalDate.now().minusDays(1);
         LocalDate before = LocalDate.now().plusDays(1);
-        voteResultRepository.findAllByDayOfResultAfterAndDayOfResultBefore(after, before);
+        List<VoteResult> votes = voteResultRepository.findAllByDayOfResultAfterAndDayOfResultBefore(after, before);
+        voteResultRepository.deleteAll(votes);
     }
 
     private void saveVoteResult(RestaurantSumVotes winner) {
