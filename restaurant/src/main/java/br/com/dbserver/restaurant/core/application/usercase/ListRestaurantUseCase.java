@@ -11,23 +11,26 @@ import br.com.dbserver.restaurant.core.application.dto.RestaurantListDto;
 import br.com.dbserver.restaurant.core.domain.Restaurant;
 import br.com.dbserver.restaurant.core.domain.repository.RestaurantRepository;
 import br.com.dbserver.restaurant.core.domain.repository.VoteRepository;
+import br.com.dbserver.restaurant.core.domain.service.VoteTimeAllowedService;
 
 @Component
 public class ListRestaurantUseCase {
     private final RestaurantRepository restaurantRepository;
     private final VoteRepository voteRepository;
+    private final VoteTimeAllowedService voteTimeAllowedService;
 
-    public ListRestaurantUseCase(RestaurantRepository restaurantRepository, VoteRepository voteRepository) {
+    public ListRestaurantUseCase(RestaurantRepository restaurantRepository, VoteRepository voteRepository, VoteTimeAllowedService voteTimeAllowedService) {
         this.restaurantRepository = restaurantRepository;
         this.voteRepository = voteRepository;
+        this.voteTimeAllowedService = voteTimeAllowedService;
     }
 
     public List<RestaurantListDto> list() {
         List<RestaurantListDto> restaurantListDtos = new ArrayList<>();
         List<Restaurant> allRestaurants = restaurantRepository.findAllNotSelectedThisWeek();
-        // todo only return votes from 00:00 to 12:00
-        LocalDateTime countAfterDate = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0);
-        LocalDateTime countBeforeDate = LocalDateTime.now().withHour(23).withMinute(0).withSecond(0);
+
+        LocalDateTime countAfterDate = voteTimeAllowedService.getStartTime();
+        LocalDateTime countBeforeDate = voteTimeAllowedService.getFinishTime();
 
         return allRestaurants.stream().map(r -> {
             Long vote = voteRepository.countByRestaurantAndDateTimeAfterAndDateTimeBefore(r,

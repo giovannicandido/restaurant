@@ -35,6 +35,40 @@ public class VoteUseCase {
 
     @Transactional
     public void vote(Long restaurantId, String username) {
+        assertTimeAllowed();
+        Optional<User> userByUsername = userRepository.findByUsername(username);
+
+        assertUserExists(userByUsername);
+
+        Optional<Restaurant> restaurantById = restaurantRepository.findById(restaurantId);
+
+        assertRestaurantExists(restaurantById);
+
+        User user = userByUsername.get();
+        Restaurant restaurant = restaurantById.get();
+
+        assertOneVotePerUserPerDay(user);
+
+        Vote vote = new Vote();
+        vote.setUser(user);
+        vote.setRestaurant(restaurant);
+        vote.setDateTime(LocalDateTime.now());
+        voteRepository.save(vote);
+    }
+
+    private void assertRestaurantExists(Optional<Restaurant> restaurantById) {
+        if (restaurantById.isEmpty()) {
+            throw new RestaurantException("Restaurant not found");
+        }
+    }
+
+    private void assertUserExists(Optional<User> userByUsername) {
+        if (userByUsername.isEmpty()) {
+            throw new RestaurantException("User not found");
+        }
+    }
+
+    private void assertTimeAllowed() {
         if (!voteTimeAllowedService.isTimeAllowed()) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
@@ -44,22 +78,6 @@ public class VoteUseCase {
                     + " and " + voteTimeAllowedService.getFinishTime().format(formatter)
             );
         }
-        Optional<User> userByUsername = userRepository.findByUsername(username);
-        if (userByUsername.isEmpty()) {
-            throw new RestaurantException("User not found");
-        }
-        Optional<Restaurant> restaurantById = restaurantRepository.findById(restaurantId);
-        if (restaurantById.isEmpty()) {
-            throw new RestaurantException("Restaurant not found");
-        }
-
-        assertOneVotePerUserPerDay(userByUsername.get());
-
-        Vote vote = new Vote();
-        vote.setUser(userByUsername.get());
-        vote.setRestaurant(restaurantById.get());
-        vote.setDateTime(LocalDateTime.now());
-        voteRepository.save(vote);
     }
 
     public void assertOneVotePerUserPerDay(User user) {

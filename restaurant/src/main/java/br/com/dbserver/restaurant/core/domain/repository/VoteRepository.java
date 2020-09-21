@@ -2,6 +2,7 @@ package br.com.dbserver.restaurant.core.domain.repository;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import br.com.dbserver.restaurant.core.domain.Restaurant;
