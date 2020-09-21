@@ -11,6 +11,7 @@ import br.com.dbserver.restaurant.core.application.dto.RestaurantListDto;
 import br.com.dbserver.restaurant.core.domain.Restaurant;
 import br.com.dbserver.restaurant.core.domain.repository.RestaurantRepository;
 import br.com.dbserver.restaurant.core.domain.repository.VoteRepository;
+import br.com.dbserver.restaurant.core.domain.service.RestaurantService;
 import br.com.dbserver.restaurant.core.domain.service.VoteTimeAllowedService;
 
 @Component
@@ -18,16 +19,21 @@ public class ListRestaurantUseCase {
     private final RestaurantRepository restaurantRepository;
     private final VoteRepository voteRepository;
     private final VoteTimeAllowedService voteTimeAllowedService;
+    private final RestaurantService restaurantService;
 
-    public ListRestaurantUseCase(RestaurantRepository restaurantRepository, VoteRepository voteRepository, VoteTimeAllowedService voteTimeAllowedService) {
+    public ListRestaurantUseCase(RestaurantRepository restaurantRepository,
+                                 VoteRepository voteRepository,
+                                 VoteTimeAllowedService voteTimeAllowedService,
+                                 RestaurantService restaurantService) {
         this.restaurantRepository = restaurantRepository;
         this.voteRepository = voteRepository;
         this.voteTimeAllowedService = voteTimeAllowedService;
+        this.restaurantService = restaurantService;
     }
 
     public List<RestaurantListDto> list() {
-        List<RestaurantListDto> restaurantListDtos = new ArrayList<>();
-        List<Restaurant> allRestaurants = restaurantRepository.findAllNotSelectedThisWeek();
+        List<Long> excludedIds = restaurantService.findRestaurantIdsVotedThisWeek();
+        List<Restaurant> allRestaurants = restaurantRepository.findAllNotIn(excludedIds);
 
         LocalDateTime countAfterDate = voteTimeAllowedService.getStartTime();
         LocalDateTime countBeforeDate = voteTimeAllowedService.getFinishTime();

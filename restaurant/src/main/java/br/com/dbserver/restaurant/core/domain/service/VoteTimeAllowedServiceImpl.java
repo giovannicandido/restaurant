@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
- * Service used to query allowed time frames of voting proccess.
+ * Service used to query allowed time frames of voting process.
  * This implementation only allow voting from 8 to 12 by default
  */
 @Service
