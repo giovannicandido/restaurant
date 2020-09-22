@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import br.com.dbserver.restaurant.core.domain.LocalizedWeek;
 import br.com.dbserver.restaurant.core.domain.repository.VoteResultRepository;
 
 @ExtendWith(MockitoExtension.class)
@@ -21,7 +22,7 @@ class RestaurantServiceImplTest {
     void findRestaurantIdsVotedThisWeek() {
         RestaurantServiceImpl restaurantService = new RestaurantServiceImpl(voteResultRepository);
         LocalizedWeek localizedWeek = new LocalizedWeek(Locale.forLanguageTag("pt_BR"));
-        restaurantService.findRestaurantIdsVotedThisWeek();
+        restaurantService.findRestaurantIdsNotChoosedThisWeek();
 
         verify(voteResultRepository).findAllByDayOfResultAfterAndDayOfResultBefore(
                 localizedWeek.getFirstDay(LocalDate.now()),

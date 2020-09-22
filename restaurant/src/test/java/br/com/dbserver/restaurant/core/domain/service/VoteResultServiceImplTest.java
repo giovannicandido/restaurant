@@ -16,11 +16,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import br.com.dbserver.restaurant.core.domain.Restaurant;
 import br.com.dbserver.restaurant.core.domain.VoteResult;
+import br.com.dbserver.restaurant.core.domain.dto.RestaurantSumVotes;
 import br.com.dbserver.restaurant.core.domain.repository.VoteRepository;
 import br.com.dbserver.restaurant.core.domain.repository.VoteResultRepository;
 
 @ExtendWith(MockitoExtension.class)
-class VoteResultServiceTest {
+class VoteResultServiceImplTest {
     @Mock
     private VoteResultRepository voteResultRepository;
     @Mock
@@ -29,7 +30,7 @@ class VoteResultServiceTest {
     @Test
     void processVoteOfThisDay() {
 
-        VoteResultService voteResultService = new VoteResultService(voteResultRepository, voteRepository);
+        VoteResultService voteResultService = new VoteResultServiceImpl(voteResultRepository, voteRepository);
 
         Restaurant r1 = new Restaurant();
         r1.setId(1L);

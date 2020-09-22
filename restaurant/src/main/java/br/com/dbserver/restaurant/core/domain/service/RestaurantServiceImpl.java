@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import br.com.dbserver.restaurant.core.domain.LocalizedWeek;
 import br.com.dbserver.restaurant.core.domain.VoteResult;
 import br.com.dbserver.restaurant.core.domain.repository.VoteResultRepository;
 
@@ -19,7 +20,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public List<Long> findRestaurantIdsVotedThisWeek() {
+    public List<Long> findRestaurantIdsNotChoosedThisWeek() {
         LocalizedWeek localizedWeek = new LocalizedWeek(Locale.forLanguageTag("pt_BR"));
         LocalDate startOfWeek = localizedWeek.getFirstDay(LocalDate.now());
         LocalDate endOfWeek = localizedWeek.getLastDay(LocalDate.now());

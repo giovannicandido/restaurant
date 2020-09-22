@@ -1,4 +1,4 @@
-package br.com.dbserver.restaurant.security.jwt;
+package br.com.dbserver.restaurant.security.domain.jwt;
 
 import java.io.IOException;
 

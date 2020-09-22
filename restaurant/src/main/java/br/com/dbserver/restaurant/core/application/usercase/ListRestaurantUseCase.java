@@ -31,7 +31,7 @@ public class ListRestaurantUseCase {
     }
 
     public List<RestaurantListDto> list() {
-        List<Long> excludedIds = restaurantService.findRestaurantIdsVotedThisWeek();
+        List<Long> excludedIds = restaurantService.findRestaurantIdsNotChoosedThisWeek();
         List<Restaurant> allRestaurants = restaurantRepository.findAllNotIn(excludedIds);
 
         LocalDateTime countAfterDate = voteTimeAllowedService.getStartTime();

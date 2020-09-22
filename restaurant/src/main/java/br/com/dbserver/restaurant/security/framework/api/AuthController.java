@@ -29,7 +29,7 @@ import br.com.dbserver.restaurant.security.framework.api.request.LoginRequest;
 import br.com.dbserver.restaurant.security.framework.api.request.SignupRequest;
 import br.com.dbserver.restaurant.security.framework.api.response.JwtResponse;
 import br.com.dbserver.restaurant.security.framework.api.response.MessageResponse;
-import br.com.dbserver.restaurant.security.jwt.JwtUtils;
+import br.com.dbserver.restaurant.security.domain.jwt.JwtUtils;
 
 @RestController
 @RequestMapping("${v1Api}/auth")

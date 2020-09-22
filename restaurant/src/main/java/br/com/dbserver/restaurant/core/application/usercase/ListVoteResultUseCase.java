@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import br.com.dbserver.restaurant.core.application.dto.VoteResultListDto;
 import br.com.dbserver.restaurant.core.domain.VoteResult;
 import br.com.dbserver.restaurant.core.domain.repository.VoteResultRepository;
-import br.com.dbserver.restaurant.core.domain.service.LocalizedWeek;
+import br.com.dbserver.restaurant.core.domain.LocalizedWeek;
 
 @Component
 public class ListVoteResultUseCase {

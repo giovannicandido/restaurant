@@ -11,7 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import br.com.dbserver.restaurant.core.domain.Restaurant;
-import br.com.dbserver.restaurant.core.domain.service.RestaurantSumVotes;
+import br.com.dbserver.restaurant.core.domain.dto.RestaurantSumVotes;
 import br.com.dbserver.restaurant.security.domain.User;
 
 @DataJpaTest

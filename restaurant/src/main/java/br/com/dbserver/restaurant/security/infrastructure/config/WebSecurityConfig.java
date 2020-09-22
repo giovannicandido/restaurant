@@ -15,8 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import br.com.dbserver.restaurant.security.domain.services.UserDetailsServiceImpl;
-import br.com.dbserver.restaurant.security.jwt.AuthEntryPointJwt;
-import br.com.dbserver.restaurant.security.jwt.AuthTokenFilter;
+import br.com.dbserver.restaurant.security.domain.jwt.AuthEntryPointJwt;
+import br.com.dbserver.restaurant.security.domain.jwt.AuthTokenFilter;
 
 @Configuration
 @EnableWebSecurity

@@ -1,4 +1,4 @@
-package br.com.dbserver.restaurant.core.domain.service;
+package br.com.dbserver.restaurant.core.domain.dto;
 
 import java.util.Objects;
 
