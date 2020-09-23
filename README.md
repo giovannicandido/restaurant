@@ -24,7 +24,10 @@ Nota: repare no espaço adicionado ao primeiro parametro, isso é necessário no
 algum motivo desconhecido.
 
 
-**Interface:** Entre na pasta ui (cd ui), rode o commando `npm run start`
+**Interface:** Entre na pasta ui (cd ui), rode o commandos:
+
+    npm install
+    npm run start
 
 ### Utilização da aplicação
 
