@@ -1,4 +1,16 @@
 <div class="row">
+
+  <div class="col-12 text-center" *ngIf="loadError">
+    <div class="alert alert-danger">
+      {{ loadError.message}}
+    </div>
+  </div>
+
+  <div class="col-12 text-center" *ngIf="loading">
+    Loading ...
+  </div>
+</div>
+<div class="row">
   <div class="col-sm-4" *ngFor="let restaurant of (restaurants | async)" style="margin-top: 15px">
     <div class="card" style="width: 18rem;">
       <img class="card-img-top" [src]="restaurant.imgUrl" alt="Restaurant image">
@@ -13,4 +25,3 @@
     </div>
   </div>
 </div>
-

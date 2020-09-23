@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { Observable, throwError } from 'rxjs';
 import { Restaurant } from '../_models/restaurant';
-import { catchError } from 'rxjs/operators';
+import { catchError, finalize, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -12,6 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomeComponent implements OnInit {
   restaurants: Observable<Restaurant[]>;
+  loadError = null;
+  loading = false;
 
   constructor(private service: HomeService, private toast: ToastrService) {
   }
@@ -35,6 +37,15 @@ export class HomeComponent implements OnInit {
   }
 
   loadRestaurants() {
-    this.restaurants = this.service.load();
+    this.loading = true;
+    this.restaurants = this.service.load()
+      .pipe(
+        finalize(() => this.loading = false),
+        catchError(err => {
+          this.loadError = err;
+          this.loading = false;
+          return throwError(err);
+        })
+      );
   }
 }
