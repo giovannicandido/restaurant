@@ -157,6 +157,8 @@ Um console para acessar e manipular o banco de dados em memória pode se encontr
 * Melhorar a performance da listagem. Hoje para cada resturante é feito uma nova
 query no banco contando os votos, isso se deve ao fato de não se poder fazer em uma
 única query e incluir os restaurantes não selecionados na semana e também os que não tiveram votos.
-Mas posso estar enganado.
-* 
+Mas posso estar enganado. No entanto esse problema só teria impacto para muitos restaurantes cadastrados.
+* Enviar notificação por email aos usuários sobre o restaurante escolhido seria uma boa feature a se adicionar.
+* Aumentar a cobertura dos testes. A aplicação tem uma média de 73% de cobertura, mas os itens principais, 
+que são os casos de uso do modulo core e os servicos desse modulo possuem 95% e 87% respectivamente.
 
