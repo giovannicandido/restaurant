@@ -1,4 +1,5 @@
 INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 insert into users(email, password, username)
 values ('user1@dbserver.com.br','$2a$10$sDnUOCj0HjyRTB8BjVASKu2XKcJ0AZAAHxNyLig4ijXfP1jQ6OEOa', 'user1');
 insert into users(email, password, username)

@@ -20,7 +20,7 @@ valor inicia em 8 horas e termina as 12 horas.
 Experimente trocar os horários para que veja o bloqueio ou não do voto dependendo do horario
 atual da máquina.
 
-Nota: repare no espaço adicionado ao primeiro parametro, isso é necessário no windows e no linux por
+Nota: repare no espaço adicionado ao primeiro parametro, isso é necessário no windows e no macosx por
 algum motivo desconhecido.
 
 
@@ -65,11 +65,7 @@ trabalhar autenticação em uma _single page application_.
 Os usuário se encontram no banco de dados na tabela **users** tem seus grupos de acesso na tabela
 **roles**. 
 
-Existem 3 roles diponíveis na aplicação, mas apenas uma dela é utilizada. Sendo elas:
-
-* ROLE_USER,
-* ROLE_MODERATOR,
-* ROLE_ADMIN
+Existe duas roles cadastradas no sistema, **ROLE_ADMIN** e **ROLE_USER** mas apenas role  **ROLE_USER** é utilizada.
 
 Um enum **ERole** mantem o mapeamento de todas as roles possíveis e deve ser atualizado caso
 uma nova role seja criada.
@@ -161,4 +157,5 @@ Mas posso estar enganado. No entanto esse problema só teria impacto para muitos
 * Enviar notificação por email aos usuários sobre o restaurante escolhido seria uma boa feature a se adicionar.
 * Aumentar a cobertura dos testes. A aplicação tem uma média de 73% de cobertura, mas os itens principais, 
 que são os casos de uso do modulo core e os servicos desse modulo possuem 95% e 87% respectivamente.
+* Bloquear o voto ao restaurantes selecionados na semana. Atualmente o restaurante só é escondido da lista.
 
